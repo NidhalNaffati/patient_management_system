@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>liste des Medecin</title>
+      <meta charset="utf-8">
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>Mon Profil</h1>
+<ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li class="active">Mon Profil</li>
+</ol>
+</section>
+<div layout:fragment="content">
+    <div class="box">
+        
+        <div class="box-body no-padding">
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                 
+                    <th>Nom</th>
+                     <th>Prenom</th>
+                    <th>Telephone</th>
+                  <th>Matricule</th>
+                    
+                     <th>Grade</th>
+                    <th>Spécialité</th>
+                    <th>Date de recrutement</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="row : ${list}">
+                    <td th:text="${row.id}"></td>
+                    <td th:text="${row.nom}"></td>
+                    <td th:text="${row.prenom}"></td>
+                    <td th:text="${row.contact.telephone}"></td>
+                    <td th:text="${row.matricule}"></td>
+                    <td th:text="${row.grade}"></td>
+                    <td th:text="${row.specialite}"></td>
+                      <td th:text="${#dates.format(row.dateRecrutement, 'dd/MM/yyyy')}"></td>
+                    <td>
+                        <a th:href="${'/medecin/editprofil/ +row.id'}">Modifier</a> 
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</div>
+</body>
+</html>

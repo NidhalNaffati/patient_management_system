@@ -1,0 +1,129 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+
+<title>Echo</title>
+<meta charset="utf-8">
+
+</head>
+<body>
+	<section layout:fragment="header">
+		<h1> Modifier Echo</h1>
+
+		<ol class="breadcrumb">
+			<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+			<li class="active">Modifier Echo</li>
+		</ol>
+	</section>
+	<div layout:fragment="content">
+		<div class="box">
+			<div class="container">
+				<div class="box-header with-border">
+					<div class="box-tools pull-right"></div>
+				</div>
+				<form data-toggle="validator" role="form"
+					th:object="${echoExamenClinique}"
+					th:action="@{/echoExamenClinique/save}" method="post">
+					<div class="box-body">
+								<input type="hidden" th:field="*{id}" />
+
+						<div class="card-body">
+							<div class="tab-content" id="custom-tabs-one-tabContent">
+								<div class="tab-pane fade in active"
+									id="custom-tabs-one-general" role="tabpanel"
+									aria-labelledby="custom-tabs-one-general-tab">
+									<div class="row">
+
+										<div class="form-group col-md-6">
+											<label for="" class="col-sm-4 control-label">Echo Cardiaque</label>
+											<div class="col-sm-8">
+												<textarea required class="form-control"
+													autocomplete="off" placeholder="echoCardiaque"
+													th:field="*{echoCardiaque}" id="echoCardiaque"></textarea>
+											</div>
+										</div>
+										<div class="form-group col-md-6">
+											<label for="gazSang" class="col-sm-4 control-label">
+												gazSang</label>
+											<div class="col-sm-8">
+												<textarea required class="form-control"
+													placeholder="gazSang" th:field="*{gazSang}" id="gazSang"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+
+										<div class="form-group col-md-6">
+											<label for="fondOeil" class="col-sm-4 control-label">fond
+												Oeil</label>
+											<div class="col-sm-8">
+												<textarea type="text" required class="form-control"
+													autocomplete="off" placeholder="fondOeil"
+													th:field="*{fondOeil}" id="fondOeil"></textarea>
+											</div>
+										</div>
+
+
+
+										<div class="form-group col-md-6">
+											<label for="eRG" class="col-sm-4 control-label">ERG </label>
+											<div class="col-sm-8">
+
+												<textarea type="text" required="true" class="form-control"
+													autocomplete="off" placeholder="eRG" th:field="*{eRG}"
+													id="eRG"></textarea>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+
+										<div class="form-group col-md-6">
+											<label for="pEA" class="col-sm-4 control-label">PEA</label>
+											<div class="col-sm-8">
+												<textarea type="text" required class="form-control"
+													autocomplete="off" placeholder="pEA" th:field="*{pEA}"
+													id="pEA"></textarea>
+											</div>
+										</div>
+
+
+
+										<div class="form-group col-md-6">
+											<label for="emgVcn" class="col-sm-4 control-label">emgVcn
+											</label>
+											<div class="col-sm-8">
+
+												<textarea type="text" required="true" class="form-control"
+													autocomplete="off" placeholder="emgVcn"
+													th:field="*{emgVcn}" id="emgVcn"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+
+										<div class="form-group col-md-6">
+											<label for="eEG" class="col-sm-4 control-label">EEG</label>
+											<div class="col-sm-8">
+												<textarea type="text" required class="form-control"
+													autocomplete="off" placeholder="eEG" th:field="*{eEG}"
+													id="eEG"></textarea>
+											</div>
+										</div>
+									</div>
+
+									<button class="btn btn-primary" type="submit">Modifier</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,578 @@
+
+ 	<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+<head>
+    
+    <title>Ajouter Dossier médical </title> 
+    <meta charset="utf-8">
+    
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>Ajouter Dossier médical </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Ajouter Dossier médical</li>
+    </ol>
+</section>
+
+<div layout:fragment="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">dossier</h3>
+            <div class="box-tools pull-right">
+                <a href="/dossierMedical" type="button" class="btn btn-box-tool"><i class="fa fa-list-ul"></i></a>
+            </div>
+              <div class="box-tools pull-right">
+                <a href="/patient/add" type="button" class="btn btn-box-tool"><i class="fa fa-plus"></i></a>
+                <br clear="all" />
+            </div>
+        </div>
+        <form data-toggle="validator" role="form" th:object="${dossierMedical}" th:action="@{/dossierMedical/save/{id}(id=${dossierMedical.id})}" method="post">
+            <div class="box-body">
+                <input type="hidden" th:field="*{id}"/>
+                        <div class="row">
+		                <div class="form-group col-md-4">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="numDossier">Num de dossier</label>
+					 <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" pattern="[0-9]/[0-9]" placeholder="X/X "  th:field="*{numDossier}" id="numDossier" />
+                </div>
+				</div>
+				</div>
+                <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="dateExemen">Date d'exeman</label>
+					<div class="col-sm-8">
+                    <input type="Date" required="true" class="form-control" placeholder="Date d'exemen" th:field="*{dateExamen}" id="dateExamen" />
+               </div>
+			   </div>
+                <div class="form-group col-md-4">
+                 <label class="col-sm-4 control-label">Consanguinité</label>
+				 <div class="col-sm-8">
+            <select class="form-control" th:field="*{consansguinite}">
+                <option value="">Select Consanguinité</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                 <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                </div>
+				</div>
+				</div>
+				 <div class="row">
+		                <div class="form-group col-md-4">
+                   <label class="col-sm-4 control-label">Autres ATCD Familiaux</label>
+                   <div class="col-sm-8">
+            <select class="form-control" th:field="*{autresATCDFamilliaux}">
+                <option value="">Select Autres ATCD Familiaux</option>
+                 <option value="NP">NP</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                 <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                </div>
+                </div>
+                 <div class="form-group col-md-4">
+                     <label class="col-sm-4 control-label">Cas de Décés néonatal</label>
+                     <div class="col-sm-8">
+            <select class="form-control" th:field="*{casDecesNeonatal}">
+                
+                <option value="0">0</option>
+                <option value="1">1</option>
+                 <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                </div>
+                </div>
+              
+                <div class="form-group col-md-4">
+                     <label class="col-sm-4 control-label">Grossesse</label>
+                     <div class="col-sm-8">
+            <select class="form-control" th:field="*{grossesse}">
+                
+                <option value="1">1</option>
+                 <option value="2">2</option>
+                  <option value="3">3</option>
+                   <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                </div>
+                </div>
+                  </div>
+                         <div class="row">
+		                <div class="form-group col-md-4">
+		                <label class="col-sm-4 control-label">Accouchemment</label>
+		                <div class="col-sm-8">
+            <select class="form-control" th:field="*{accouchement}">
+           
+                <option value="1">1</option>
+                 <option value="2">2</option>
+                  <option value="3">3</option>
+                   <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                 </div>
+                  </div>
+                    <div class="form-group col-md-4">
+                 <label class="col-sm-4 control-label">Voie</label>
+                  <div class="col-sm-8">
+            <select class="form-control" th:field="*{voie}">
+               
+               <option value="1">1</option>
+                 <option value="2">2</option>
+                </select>
+                </div>
+                 </div>
+                  <div class="form-group col-md-4">
+                 <label class="col-sm-4 control-label">SFA</label>
+                  <div class="col-sm-8">
+            <select class="form-control" th:field="*{sFA}">
+              
+                <option value="0">0</option>
+                <option value="1">1</option>
+                </select>
+                </div>
+                </div>
+                </div>
+                              <div class="row">
+		                <div class="form-group col-md-4">
+		                <label class="col-sm-4 control-label">Incidents Néonataux </label>
+		                <div class="col-sm-8">
+            <select class="form-control" th:field="*{incidentsNeonataux}">
+              <option value="NP">NP</option>
+              <option value="0">0</option>
+                <option value="1">1</option>
+                 <option value="2">2</option>
+                  <option value="3">3</option>
+                   <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                </div>
+                 </div>
+                 <div class="form-group col-md-4">
+                 <label class="col-sm-4 control-label">Réanimatiaux</label>
+                 <div class="col-sm-8">
+            <select class="form-control" th:field="*{reanimatiaux}">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                </select>
+                </div>
+                </div>
+                  <div class="form-group col-md-4">
+                 <label class="col-sm-4 control-label">Séjour de néonat</label>
+                   <div class="col-sm-8">
+            <select class="form-control" th:field="*{sejourNeonat}">
+            <option value="0">0</option>
+                <option value="1">1</option>
+                </select>
+                </div>
+                </div>
+                </div>
+                  <div class="row">
+		                <div class="form-group col-md-4">
+                   <label class="col-sm-4 control-label">Denvers</label>
+                   <div class="col-sm-8">
+            <select class="form-control" th:field="*{denvers}">
+              
+                 <option value="NP">NP</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                 <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                </div>
+                </div>
+                  <div class="form-group col-md-4">
+                 <label class="col-sm-4 control-label">Dysmorphie facile</label>
+                  <div class="col-sm-8">
+            <select class="form-control" th:field="*{dysmorphieFaciale}">
+            <option value="0">0</option>
+                <option value="1">1</option>
+                </select>
+                </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="poidsNaissance">Poids Naissances</label>
+                    <div class="col-sm-8">
+                    <input type="number" required="true" class="form-control" pattern="[0-9],[0-9]" placeholder="X,X "  th:field="*{poidNaissance}" id="poidNaissance" />
+                </div>
+                </div></div>
+               <div class="row">
+		                <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="poids">Poids </label>
+                    <div class="col-sm-8">
+                    <input type="number" required="true" class="form-control" placeholder="X,X "  th:field="*{poids}" id="poids" />
+                </div>
+                </div>
+                 <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="perimetreCranien">Périmétre cranien</label>
+                    <div class="col-sm-8">
+                    <input type="number" required="true" class="form-control" pattern="[0-9],[0-9]" placeholder="X,X "  th:field="*{perimetreCranien}" id="perimetreCranien" />
+                </div>
+                </div>
+              <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label"  for="marquéSurLeVersant">Marqué sur le versant</label>
+                    <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder=" versant"   th:field="*{marqueSurLeVersant}" id="marqueSurLeVersant" />
+                </div>
+                </div></div>
+                     <div class="row">
+		                <div class="form-group col-md-4">
+							<label class="col-sm-4 control-label">  Autres ATCD personels: </label>
+							<div class="col-sm-8">
+							<input type="hidden" name="autresATCDPersonels" th:value="${autresATCDPersonels}"  />
+							
+						</div>
+                <div>
+                
+							<input type="radio" name="ATCD personels" value="Oui"
+							checked="checked"  onchange=" document.getElementById('oui').style.display='none' " />
+							<label>Non</label>
+							<input type="radio" name="ATCD personels" value="Non" 
+							 onchange=" document.getElementById('oui').style.display='block' " />
+							 <label>Oui</label>
+							 </div>
+                                  <div id="oui"  style="display:none">
+							<label>  ATCD personels : </label>
+							<input type="text"  name="autresAtcdPersonels"  />
+						       </div>
+						</div>
+							
+						
+						<div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="marquéSurLeVersant">Cassure staturapondéral</label>
+                    <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder=" Cassure staturapondéral"   th:field="*{cassureStaturaponderal}" id="cassureStaturaponderal" />
+                </div>
+					</div>
+							<div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="marquéSurLeVersant">Diagnostic prénatal</label>
+                      <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder=" diagnostic"   th:field="*{diagnosticPrenatal}" id="diagnosticPrenatal" />
+                </div>
+                	</div>
+                	</div>
+                	 <div class="row">
+		                <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="marquéSurLeVersant">Age de début</label>
+                     <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder=" Age de Debut"   th:field="*{ageDebut}" id="ageDebut" />
+                </div>
+                </div>
+                 
+                 		  <div class="form-group col-md-4">
+                    <label  class="col-sm-4 control-label" for="marquéSurLeVersant">Signes de début </label>
+                     <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder=" Signes de début"   th:field="*{ageDebut}" id="ageDebut" />
+                </div>
+                </div>
+                
+                	 <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label">deficience Intellectuelle</label>
+                       <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder="deficience_intellectuelle"   th:field="*{deficienceIntellectuelle}" id="deficienceIntellectuelle" />
+                </div>
+                </div>
+                </div>
+                 <div class="row">
+		                <div class="form-group col-md-4">
+                 <label class="col-sm-4 control-label">pyruvate</label>
+                 <div class="col-sm-8">
+            <select class="form-control" th:field="*{pyruvate}">
+             <option value="NF">NF</option>
+             <option value="0">0</option>
+                <option value="1">1</option>
+                 <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                </div>
+                 </div>
+              
+                   <div class="form-group col-md-4">
+                 <label class="col-sm-4 control-label">Dysmorphie facile</label>
+                 <div class="col-sm-8">
+            <select class="form-control" th:field="*{dysmorphieFaciale}">
+            <option value="0">0</option>
+                <option value="1">1</option>
+                </select>
+                </div>
+                </div>
+                  <div class="form-group col-md-4">
+                   <label  class="col-sm-4 control-label">Evolution par poussée</label>
+                   <div class="col-sm-8">
+            <select class="form-control" th:field="*{evolutionPousse}">
+             <option value="">NP</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                 <option value="2">2</option>
+                  
+                </select>
+                </div>
+                </div>
+                </div>
+                <div class="row">
+		                <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="pousseedeclanchepar">Poussée declanché par</label>
+                      <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder="Poussée declanchée par"  th:field="*{pousseeDeclanchePar}" id="pousseeDeclanchePar" />
+                </div>
+                </div>
+                   <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="taille">Taille</label>
+                     <div class="col-sm-8">
+                    <input type="number" required="true" class="form-control" placeholder=""  th:field="*{taille}" id="taille" />
+                </div>
+                </div>
+                    <div class="form-group col-md-4">
+                   <label class="col-sm-4 control-label">L/P</label>
+                    <div class="col-sm-8">
+            <select class="form-control" th:field="*{lp}">
+             <option value="NF">NF</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                 <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                </div>
+                </div>
+                </div>
+                <div class="row">
+		                <div class="form-group col-md-4">
+                  <label class="col-sm-4 control-label">Ammoniémie</label>
+                   <div class="col-sm-8">
+            <select class="form-control" th:field="*{ammoniemie}">
+                <option value="NF">NF</option>
+                <option value="1">1</option>
+                 <option value="2">2</option>
+                  <option value="3">3</option>
+                   <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                </div>
+                </div>
+               
+                 <div class="form-group col-md-4">
+                     <label class="col-sm-4 control-label">Accide gras libres</label>
+                     <div class="col-sm-8">
+            <select class="form-control" th:field="*{acideGrasLibres}">
+                   <option value="1">1</option>
+                 <option value="2">2</option>
+                  <option value="3">3</option>
+                   <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                </div>
+                </div>
+                
+                       
+                  <div class="form-group col-md-4">
+                 <label class="col-sm-4 control-label">Glycémie</label>
+                 <div class="col-sm-8">
+            <select class="form-control" th:field="*{glycemie}">
+                <option value="0">0</option>
+               <option value="1">1</option>
+                 <option value="2">2</option>
+                </select>
+                </div>
+                </div>
+                </div>
+                 <div class="row">
+		                <div class="form-group col-md-4">
+                <label class="col-sm-4 control-label">CAA</label>
+                <div class="col-sm-8">
+            <select class="form-control" th:field="*{cAA}">
+                   <option value="0">0</option>
+                <option value="1">1</option>
+                </select>
+                </div>
+                </div>
+                             <div  class="form-group col-md-4">
+                             
+                             <label class="col-sm-4 control-label">CAO </label>
+                              <div class="col-sm-8">
+            <select class="form-control" th:field="*{cAO}">
+     
+              <option value="0">0</option>
+                <option value="1">1</option>
+                 
+                </select>
+                 </div>
+                 </div>
+                  <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="foie">Foie</label>
+                    <div class="col-sm-8">
+                    
+                    <input type="text" required="true" class="form-control" placeholder="Foie"  th:field="*{foie}" id="foie" />
+                </div>
+                </div>
+                </div>
+                <div class="row">
+		                <div class="form-group col-md-4">
+                
+                    <label class="col-sm-4 control-label" for="hyperpilosite">Hyperpilosité</label>
+                     <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder="Hyperpilosité"  th:field="*{hyperpilosite}" id="hyperpilosite" />
+                </div>
+                </div>
+                  <div class="form-group col-md-4">
+                 <label class="col-sm-4 control-label">Réanimatiaux</label>
+                 <div class="col-sm-8">
+            <select class="form-control" th:field="*{reanimatiaux}">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                </select>
+                </div>
+                </div>
+                 <div class="form-group col-md-4">
+                   <label  class="col-sm-4 control-label">Consentement</label>
+                   <div class="col-sm-8">
+            <select class="form-control" th:field="*{consentement}">
+             
+                 <option value="NP">NP</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                 <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                </div>
+                </div>
+                </div>
+                <div class="row">
+		                <div class="form-group col-md-4">
+                
+                    <label class="col-sm-4 control-label" for="poidsNaissance">Prélevement d'ADN</label>
+                    <div class="col-sm-8">
+                    <input type="number" required="true" class="form-control" placeholder="ADN"  th:field="*{prelevementADN}" id="prelevementADN" />
+                </div>
+               
+               </div>
+               
+                <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label"for="priseEnCharge">Prise en charge</label>
+                    <div class="col-sm-8">
+                    <input type="number" required="true" class="form-control" pattern="[0-9],[0-9]" placeholder="X,X"   th:field="*{priseEnCharge}" id="priseEnCharge" />
+                </div>
+                </div>
+ <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label"for="orientationGenerale">Orientation générale</label>
+                    <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" pattern="[0-9],[0-9]" placeholder="X,X"   th:field="*{orientationGenerale}" id="orientationGenerale" />
+                </div>
+                </div>
+                </div>
+                  <div class="row">
+                 <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="perimetreCranien">Périmétre cranien</label>
+                     <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" pattern="[0-9],[0-9]" placeholder="X,X "  th:field="*{perimetreCranien}" id="perimetreCranien" />
+                </div>
+                </div>
+                
+                <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="marquéSurLeVersant">Marqué sur le versant</label>
+                    <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder=" versant"   th:field="*{marqueSurLeVersant}" id="marqueSurLeVersant" />
+                </div>
+                </div>
+                <div class="form-group col-md-4">
+							<label class="col-sm-4 control-label">  Autres ATCD Familiaux: </label>
+							 <div class="col-sm-8">
+							 <input type="number" required="true" class="form-control" placeholder=" autresATCDFamilliaux"   th:field="*{autresATCDFamilliaux}" id="autresATCDFamilliaux" />
+							</div>
+							</div>
+							</div>
+							<div class="row">
+                 <div class="form-group col-md-4">
+							
+                    <label class="col-sm-4 control-label" for="marquéSurLeVersant">Cassure staturapondéral</label>
+                    <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder=" Cassure staturapondéral"   th:field="*{cassureStaturaponderal}" id="cassureStaturaponderal" />
+                </div>
+                </div>
+					
+						   <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="poids">Biopsie musculaire </label>
+                      <div class="col-sm-8">
+                    <input type="number" required="true" class="form-control" placeholder="Biopsie musculaire"  th:field="*{biopsieMusculaire}" id="biopsieMusculaire" />
+                </div>
+                
+                </div>
+                <div class="form-group col-md-4">
+                    <label  class="col-sm-4 control-label" for="traitementPris">Traitement pris</label>
+                     <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder=" traitement pris"   th:field="*{traitementPris}" id="traitementPris" />
+                </div>
+                </div>
+                </div>
+               <div class="row">
+                 <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label"  for="evolutionClinique">évolution clinique</label>
+                    <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder=" évolution clinique"   th:field="*{evolutionClinique}" id="evolutionClinique" />
+                </div>
+                </div>
+                  <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="dernierExamen">Dernier Examen </label>
+                     <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder="X,X"   th:field="*{dernierExamen}" id="dernierExamen" />
+                </div>
+                </div>
+                			<div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="endocrino">endocrino</label>
+                     <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder="endocrino"   th:field="*{endocrino}" id="endocrino" />
+                </div>
+						</div>
+						</div>
+						</div>
+						
+						<div class="row">
+						<div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="marquéSurLeVersant">Signes de début </label>
+                    <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder=" signes de début"   th:field="*{ageDebut}" id="ageDebut" />
+                </div>
+                </div>
+                		<div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="marquéSurLeVersant">Tableau Clinique</label>
+                    <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder="tableau clinique"   th:field="*{tableauClinique}" id="tableauClinique" />
+                </div>
+                </div>
+               
+                <div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for=" approchesyndromique"> approch Syndromique</label>
+                    <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder=" approche_syndromique"   th:field="*{approcheSyndromique}" id="approcheSyndromique" />
+                </div>
+                </div>
+                
+                </div> 
+                
+                <div class="row">
+						<div class="form-group col-md-4">
+                    <label class="col-sm-4 control-label" for="marquéSurLeVersant">peau </label>
+                    <div class="col-sm-8">
+                    <input type="text" required="true" class="form-control" placeholder="peau"   th:field="*{peau}" id="peau" />
+                </div>
+                </div>
+                
+                </div> 
+						       						
+             
+            <div class="box-footer">
+                <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+ 	

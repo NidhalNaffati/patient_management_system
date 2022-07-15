@@ -1,0 +1,122 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+
+<title>Consultation</title>
+<meta charset="utf-8">
+
+</head>
+<body>
+	<section layout:fragment="header">
+		<h1>Consultation</h1>
+
+		<ol class="breadcrumb">
+			<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+			<li class="active">Consultation</li>
+		</ol>
+	</section>
+	<div layout:fragment="content">
+		<div class="box">
+			<div class="container">
+				<div class="box-header with-border">
+					<div class="box-tools pull-right">
+						<a href="/medecin" type="button" class="btn btn-box-tool"><i
+							class="fa fa-list-ul"></i></a>
+					</div>
+				</div>
+				<form data-toggle="validator" role="form"
+					th:object="${consultation}" th:action="@{/consultation/save  }"
+					method="post">
+					<div class="box-body">
+						<input type="hidden" th:field="*{id}" />
+
+
+						<div class="card-body">
+							<div class="tab-content" id="custom-tabs-one-tabContent">
+								<div class="tab-pane fade in active"
+									id="custom-tabs-one-general" role="tabpanel"
+									aria-labelledby="custom-tabs-one-general-tab">
+									<div class="row">
+<div class="form-group col-md-6">
+											<label class="col-sm-4 control-label">patient</label>
+											<div class="col-sm-7">
+												
+
+												 <select class="form-control" th:field="${consultation.numDossier}"
+													id="dropOperator">
+													<option value="0"> Num Dossier</option>
+													<option th:each="m : ${dList}"
+														th:value="${m.numDossier}"
+														th:text="${m.numDossier}"></option>
+												</select>
+
+											</div>
+										</div>
+										<div class="form-group col-md-6">
+											<label class="col-sm-4 control-label">Medecin
+												Traitant</label>
+											<div class="col-sm-7">
+												
+
+												 <select class="form-control" th:field="${consultation.medecinTraitant}"
+													id="dropOperator">
+													<option value="0"> Nom de medecin</option>
+													<option th:each="m : ${mList}"
+														th:value="${m.prenom}"
+														th:text="${m.prenom}"></option>
+												</select>
+
+											</div>
+										</div>
+										</div>
+										<div class="row">
+										
+										<div class="form-group col-md-6">
+											<label for="prescription" class="col-sm-4 control-label">
+												prescription</label>
+											<div class="col-sm-7">
+												<textarea type="text" required="true" class="form-control"
+													placeholder=" prescription" th:field="*{prescription}"
+													id="prescription"></textarea>
+											</div>
+										</div>
+									
+
+										<div class="form-group col-md-6">
+											<label for="observation" class="col-sm-4 control-label">Observation</label>
+											<div class="col-sm-7">
+												<textarea type="text" required class="form-control"
+													autocomplete="off" placeholder="observation"
+													th:field="*{observation}" id="observation"></textarea>
+											</div>
+										</div>
+
+
+
+										<div class="form-group col-md-6">
+											<label for="traitementPris" class="col-sm-4 control-label">traitement
+												Pris</label>
+											<div class="col-sm-7">
+
+												<textarea type="text" required="true" class="form-control"
+													autocomplete="off" placeholder="traitementPris"
+													th:field="*{traitementPris}" id="traitementPris"></textarea>
+											</div>
+										</div>
+									</div>
+
+									<button class="btn btn-primary" type="submit">Save</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</body>
+
+</html>

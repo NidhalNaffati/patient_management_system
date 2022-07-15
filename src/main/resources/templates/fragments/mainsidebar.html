@@ -1,0 +1,129 @@
+<html  xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+ <meta charset="utf-8">
+<section class="sidebar" th:fragment="sidebar">
+   
+   
+    <ul class="sidebar-menu">
+    
+   
+        <li class="active treeview">
+            <a href="#">
+             
+                <i class="fa fa-dashboard"></i> 
+                   
+            </a>
+        </li>
+        <li class="treeview">
+        <a sec:authorize="hasAnyRole('MEDECIN','INFERMIER')" href="#">
+                <i class="fa fa-folder"></i>
+                 
+                <span>patients</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="/patient/add"><i class="fa fa-circle-o"></i> Ajouter patients</a></li>
+            </ul>
+            <ul class="treeview-menu">
+            <li><a  href="/patient/1"><i class="fa fa-circle-o"></i> Liste des  patients</a></li>
+                </ul>
+                <!--  <ul class="treeview-menu">
+                 <li><a sec:authorize="hasAnyRole('MEDECIN','INFERMIER')" href="/consultation/add"><i class="fa fa-circle-o"></i> Consultation</a></li>
+                </ul>
+                 <ul class="treeview-menu">
+                 <li><a sec:authorize="hasAnyRole('MEDECIN','INFERMIER')" href="/consultation/1"><i class="fa fa-circle-o"></i> dernier Consultation</a></li>
+                </ul> -->
+            
+        </li>
+        
+         <li class="treeview">
+ <a sec:authorize="hasRole('ADMIN')" href="#">
+                 <i class="fa fa-folder"></i>
+                <span>Medecin</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="/medecin/add"><i class="fa fa-circle-o"></i> Ajouter Medecin</a></li>
+            </ul>
+            <ul class="treeview-menu">
+                <li><a href="/medecin/1"><i class="fa fa-circle-o"></i> Liste des  Medecin</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+ <a sec:authorize="hasRole('ADMIN')" href="#">      
+        <i class="fa fa-folder"></i>
+                
+                <span>Secretaire</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="/secretaire/add"><i class="fa fa-circle-o"></i> Ajouter  Secretaire</a></li>
+            </ul>
+            <ul class="treeview-menu">
+                <li><a href="/secretaire/1"><i class="fa fa-circle-o"></i> Liste des Secretaires</a></li>
+                
+                 
+                
+            </ul>
+        </li>
+        <li class="treeview">
+            <a sec:authorize="hasAnyRole('MEDECIN','INFERMIER')" href="#">
+                 <i class="fa fa-folder"></i>
+                <span>Dossier Médical</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                 <li><a href="/dossierMedical/add +id"><i class="fa fa-circle-o"></i> Ajouter Dossier Médical</a></li>
+            </ul>     
+            <ul class="treeview-menu">
+                <li><a href="/irm/add"><i class="fa fa-circle-o"></i> Ajouter Irm</a></li>
+            </ul>
+            <ul class="treeview-menu">
+                <li><a href="/Bilan/add"><i class="fa fa-circle-o"></i> Ajouter Bilan</a></li>
+            </ul>
+            <ul class="treeview-menu">
+                <li><a href="/echoExamenClinique/add"><i class="fa fa-circle-o"></i> Ajouter Echo Examen clinique</a></li>
+            </ul>
+            <ul class="treeview-menu">
+                <li><a href="/dossierMedical/1"><i class="fa fa-circle-o"></i> Liste des  Dossier Médical</a></li>   
+            </ul>
+        </li>
+      <li class="treeview">
+               <a sec:authorize="hasRole('ADMIN')" href="#">
+                <i class="fa fa-folder"></i>
+                <span>Utilisateurs</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+         
+            
+            <ul class="treeview-menu">
+                <li><a href="/user/1"><i class="fa fa-circle-o"></i> Liste des  utilisateurs</a></li>
+            </ul>
+        </li>
+ <li class="treeview">
+            <a sec:authorize="hasRole('MEDECIN')" href="#" >
+                <i class="fa fa-folder"></i>
+                 
+                <span>Profil</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="/myProfil"><i class="fa fa-circle-o"></i>Mon profil</a></li>
+            </ul>
+            </li>
+            <li class="treeview">
+            <a sec:authorize="hasRole('INFERMIER')" href="#" >
+                <i class="fa fa-folder"></i>
+                 
+                <span>Profil</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="/Profil"><i class="fa fa-circle-o"></i>Mon profil</a></li>
+            </ul>
+            </li>
+    </ul>
+    
+</section>
+<!-- /.sidebar -->
+

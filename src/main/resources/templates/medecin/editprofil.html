@@ -1,0 +1,270 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+<head>
+    
+    <title>Modifier Mon profil</title> 
+    <meta charset="utf-8">
+    
+</head>
+<body>
+<section layout:fragment="header">
+<h1>
+    <a th:href="${'/myProfil'}"><img alt="retour" class="user-image" width="20" th:src="@{/dist/img/retour.png}"/></a>
+    Modifier Mon profil </h1>
+    
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Modifier Mon profil</li>
+    </ol>
+</section>
+<div layout:fragment="content">
+    <div class="box">
+    <div class="container">
+        <div class="box-header with-border">
+      
+            <h3 class="box-title">Informations personnelles</h3>
+            <div class="box-tools pull-right">
+                <a href="/medecin" type="button" class="btn btn-box-tool"><i class="fa fa-list-ul"></i></a>
+            </div>
+        </div>
+        <form class="form-horizontal" data-toggle="validator"  role="form" th:object="${medecin}" th:action="@{/medecin/save}" method="post">
+            <div class="box-body">
+                <input type="hidden" th:field="*{id}"/>  
+              <div class="card-body">
+                <div class="tab-content" id="custom-tabs-one-tabContent">
+                  <div class="tab-pane fade in active" id="custom-tabs-one-general" role="tabpanel" aria-labelledby="custom-tabs-one-general-tab">
+  				 <div class="row">
+		                <div class="form-group col-md-6">
+		                
+		                
+		                <label for="Nom" class="col-sm-4 control-label">Nom*</label> 
+		                <div class="col-sm-8">
+		                    <input type="text" pattern="[a-zA-Z]+" minlength="3" maxLength="10" required="true" class="form-control" placeholder="Nom "  th:field="*{nom}" id="nom" />
+		              </div>
+		              
+		                </div>
+		              
+		           <div class="form-group col-md-6">
+											<label class="col-sm-4 control-label">Matricule
+												</label>
+											<div class="col-sm-8">
+												
+
+												 <select class="form-control" th:field="${medecin.matricule}"
+													id="dropOperator">
+													<option value="0">Matricule</option>
+													<option th:each="m : ${mList}"
+														th:value="${m.matricule}"
+														th:text="${m.matricule}"></option>
+												</select>
+
+											</div>
+										</div>
+		               
+		                <div class="form-group col-md-6">
+		                  
+		                   <label for="prenom" class="col-sm-4 control-label">Prénom*</label>
+		                  <div class="col-sm-8">
+		                    <input type="text" pattern="[a-zA-Z]+" minLength="3" maxLength="10"  required="true" class="form-control" placeholder="Prenom" th:field="*{prenom}" id="prenom" />
+		              </div>
+		              </div>
+		              </div>
+		               <div class="row">
+  				 
+                   <div class="form-group col-md-6" >
+		                	<label class="col-sm-4 control-label">Etat civil</label>
+		                	    <div class="col-sm-8">
+				            <select class="form-control"  th:field="*{etatCivil}">
+				                <option value="M"> Marié(e) </option>
+				                <option value="C">Célibataire(e)</option>
+				                <option value="D">Divorcé(e)</option>
+                                 <option value="V">Veuf(ve)</option>
+</select>
+</div>
+
+</div>		    	   
+		                  <div class="form-group col-md-6">
+		                    
+		                   <label for="nomJeuneFille"class="col-sm-4 control-label">Nom de jeune fille </label>
+		                       <div class="col-sm-8">
+		                   <input type="text" pattern="[a-zA-Z]+" minlength="3" maxLength="10"   class="form-control" placeholder="Nom de jeune fille" th:field="*{nomJeuneFille}" id="nomJeuneFille" />
+		              </div>
+		               </div>
+		                </div>
+		   </div>
+		              <div class="row">
+  				
+		                   <div class="form-group col-md-6" >
+                <label for="dateNaissance" class="col-sm-4 control-label">Date de Naissance*</label>
+                <div class="col-sm-8">
+                     <div class="input-group date">
+                       <input type="date" required class="form-control"   autocomplete="off"   th:field="*{dateNaissance}" id="dateNaissance"/>
+                    </div>
+                    </div>
+                </div> 
+                 <div class="form-group col-md-6" >
+		                	<label class="col-sm-4 control-label">Lieu de Naissance</label>
+		                	<div class="col-sm-8">
+				            <select class="form-control" th:field="*{lieuNaissance}">
+				                <option value="">Select governorats</option>
+				                <option value="Ariana">Ariana</option>
+				                <option value="Beja">Béja</option>
+				                <option value="ben Arous">Ben Arous</option>
+				                <option value="bizerte">Bizerte</option>
+				                <option value="gabes">Gabès</option>
+				                <option value="gafsa">Gafsa</option>
+				                <option value="jendouba">Jendouba</option>
+				                <option value="kairouan">Kairouan</option>
+				                <option value="gasserine">Gasserine</option>
+				                <option value="kébili">Kébili</option>
+				                 <option value="elkef">Elkef</option>
+				                <option value="mahdia">Mahdia</option>
+				                <option value="manouba">La Manouba</option>
+				                <option value="mednine">Médenine</option>
+				                <option value="monastir">Monastir</option>
+				                <option value="nabeul">Nabeul</option>
+				                <option value="sfax">Sfax</option>
+				                <option value="sidi bouzid">Sidi Bouzid</option>
+				                <option value="siliana">Siliana</option>
+				                <option value="sousse">Sousse</option>
+				                <option value="tataouine">Tataouine</option>
+				                <option value="tozeur">Tozeur</option>
+				                <option value="Tunis">Tunis</option>
+				                <option value="Zaghouan">Zaghouan</option>
+				            </select>
+				            
+				            </div>  
+                </div>
+                </div> 
+                 <div class="row">
+  				  <div class="form-group col-md-6" >
+		                    <label for="sexe"class="col-sm-4 control-label">Sexe </label>
+		                        <div class="col-sm-8">
+		                    <INPUT type="radio" name="sex" value="H" checked th:field="*{sexe}" id="sexe"> Homme
+		                    <INPUT type="radio" name="sex" value="F"  th:field="*{sexe}" id="sexe"> Femme
+		            </div>
+		               </div>
+                  
+		                  </div>
+		  </div>
+		  <div class="row">
+		                  <div class="form-group col-md-6" >
+		                 <label class="col-sm-4 control-label">Region</label>
+		                 <div class="col-sm-8">
+		                 <input name="typeRegion" type="text" class="form-control" placeholder="Region"  th:field="*{address.Region}" id="Region" />
+	                </div>
+	                	</div>
+	                	
+	                	  
+  				 
+                   <div class="form-group col-md-6" >
+		                
+	                 		<label class="col-sm-4 control-label">Rue</label>
+	                 		      <div class="col-sm-8">
+	               			<input  name="rue" type="text" class="form-control" placeholder="Rue" th:field="*{address.rue}" id="rue" />
+	               </div>
+	               	     </div>
+	               	     </div>
+	               	      <div class="row">
+		                 <div class="form-group col-md-6" >
+			                <label class="col-sm-4 control-label">Code postal</label>
+			                <div class="col-sm-8">
+			               <input  name="code-postal" class="form-control" placeholder="code postal" type="number" th:field="*{address.codePostale}" id="codePostale" />
+	                	</div>
+	                	</div>
+	                
+		                
+  				 
+                   <div class="form-group col-md-6" >
+	               			<label class="col-sm-4 control-label">Pays</label>
+	               			   <div class="col-sm-8">
+	               			<input  name="pays" type="text" class="form-control" placeholder="pays" th:field="*{address.pays}" id="pays" />
+	                	</div>
+	                	</div>
+	                	</div>
+	                	
+	                	
+	                	<div class="row">
+	                	   <div class="form-group col-md-6" >
+		                    <label class="col-sm-4 control-label" for="telephone">Téléphone*</label>
+		                     <div class="col-sm-8">
+		                    <input type="tel" pattern="[0-9]{2}[0-9]{3}[0-9]{3}" required="true"   minlength="8"  class="form-control" placeholder="xx-xxx-xxx"  th:field="*{Contact.telephone}" id="telephone" />
+		               </div>
+		                </div>        
+              
+               	 
+		                <div class="form-group col-md-6">
+		                 	<label class="col-sm-4 control-label">Fixe</label>
+		                 	 <div class="col-sm-8">
+	               			<input  name="fixe"  pattern="[0-9]{2}[0-9]{3}[0-9]{3}" type="number" class="form-control" placeholder="fixe" th:field="*{Contact.fixe}" id="fixe" />
+	                	</div>
+	                	</div>
+	                </div>
+	                	<div class="row"> 
+	                	<div class="form-group col-md-6">
+		                 <label class="col-sm-4 control-label">Fax</label>
+		                  <div class="col-sm-8">
+		                 <input name="fax" type="number" placeholder="Fax" class="form-control"  th:field="*{Contact.fax}" id="fax" />
+	                	</div>
+	                	</div>
+		                 <div class="form-group col-md-6">
+	                 		<label class="col-sm-4 control-label">Facebook</label>
+	                 		 <div class="col-sm-8">
+	               			<input  name="facebook" type="text" class="form-control"  placeholder="facebook" th:field="*{Contact.fb}" id="fb" />
+	               	     </div>
+		               </div>
+		               </div>
+		             
+               	  <h3 class="box-title">Informations professionnelles</h3>
+               	   <div class="row">
+		                <div class="form-group col-md-4">
+				 
+	                	<label class="col-sm-4 control-label" for="dateRecrutement">Date de Recrutement*</label>
+	                	 <div class="col-sm-8">
+	                     <div class="input-group date">
+	                       <input type="date" required="true"  class="form-control"  autocomplete="off"  placeholder="Date" th:field="*{dateRecrutement}" id="dateRecrutement"/>
+	                  </div>
+	               </div>
+	                    
+	                </div>
+		            <div class="form-group col-md-4">
+			      		<label class="col-sm-4 control-label">Grade*</label>
+			      		 <div class="col-sm-8">
+			            <select class="form-control" required th:field="*{grade}">
+			                <option value="">Select grade</option>
+			                <option value="medecin de la santé publique">Médecin de la santé publique</option>
+			                <option value="professeur agrégé ">Professeur agrégé </option>
+			                <option value="assistant">Assistant</option>
+			              
+			                </select>
+			             </div>
+	                </div> 
+		           <div class="form-group col-md-4">
+			            <label class="col-sm-4 control-label">Spécialité*</label>
+			            <div class="col-sm-8">
+			            <select class="form-control" required th:field="*{specialite}">
+			                <option value="">Select spécialité</option>
+			                <option value="neurologue">Neurologue</option>
+			                <option value="neurologue pédiatrie ">Neurologue pédiatrie</option>
+			                <option value="psychologue">Psychologue</option>
+			                <option value="psychologue pédiatrique">Psychologue pédiatrique</option>
+			                <option value="pédiatre">Pédiatre</option>
+			                </select>
+			               </div>
+			        </div> 
+                  </div>
+                  </div>
+                  <button class="btn btn-primary" type="submit">Modifier</button>
+                  </div>
+                </form>
+            </div>
+               </div>
+         
+
+    </div>
+  
+    </body>
+    
+</html>
+          

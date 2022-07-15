@@ -1,0 +1,117 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+
+<title>Ajouter Secretaire</title>
+<meta charset="utf-8">
+
+</head>
+<body>
+	<section layout:fragment="header">
+		<h1>
+			<a th:href="${'/irm/1/'}"><img alt="retour"
+				class="user-image" width="20" th:src="@{/dist/img/retour.png}" /></a>Ajouter
+			Irm
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+			<li class="active">irm</li>
+		</ol>
+	</section>
+	<div layout:fragment="content">
+		<div class="box">
+			<div class="box-header with-border">
+			
+				<div class="box-tools pull-right">
+					<a href="/irm" type="button" class="btn btn-box-tool"><i
+						class="fa fa-list-ul"></i></a>
+				</div>
+			</div>
+			<form class="form-horizontal" data-toggle="validator" role="form"
+				th:object="${irm}" th:action="@{/irm/save}"
+				method="post">
+				<div class="box-body">
+					
+					
+					<div class="row">
+<div class="form-group col-md-6">
+											<label class="col-sm-4 control-label">patient</label>
+											<div class="col-sm-7">
+												
+
+												 <select required class="form-control" th:field="${irm.numDossier}"
+													id="dropOperator">
+													<option value="0"> Num Dossier</option>
+													<option th:each="m : ${dList}"
+														th:value="${m.numDossier}"
+														th:text="${m.numDossier}"></option>
+												</select>
+
+											</div>
+										</div>
+						<div class="form-group col-md-6">
+							<label for="spectro" class="col-sm-4 control-label">Spectro </label>
+							<div class="col-sm-8">
+								<select class="form-control" required th:field="*{spectro}">
+									 <option value="NF">NF</option>
+                                     <option value="0">0</option>
+                                     <option value="1">1</option>
+                                     <option value="2">2</option>
+                                     <option value="3">3</option>
+                  
+                </select> 
+               </div> 
+							
+							</div>
+
+						
+						
+					<div class="form-group col-md-6">
+						<label onchange="leaveChange(this)" class="col-sm-4 control-label">Irm</label>
+						<div class="col-sm-7">
+							<select class="form-control" th:field="*{typeIrm}">
+								<option value="">Select IRM</option>
+                <option value="IRM Cérébrale">IRM Cérébrale</option>
+                <option value="Entéro IRM">Entéro IRM</option>
+                <option value="IRM hypophysaire">IRM hypophysaire</option>
+                <option value="IRM orbitaire">IRM orbitaire</option>
+                <option value="IRM des conduits auditifs internes">IRM des conduits auditifs internes</option>
+                <option value="IRM des articulations temporo mandibulaires">IRM des articulations temporo mandibulaires</option>
+                <option value="IRM du massif facial">IRM du massif facial</option>
+                <option value="IRM des rochers">IRM des rochers</option>
+                <option value="IRM parotidienne">IRM parotidienne</option>
+                <option value="IRM du rachis cervical">IRM du rachis cervical</option>
+                 <option value="IRM du rachis dorsal">IRM du rachis dorsal</option>
+                <option value="IRM du rachis lombaire">IRM du rachis lombaire</option>
+                <option value="IRM des articulations sacro-iliaques">IRM des articulations sacro-iliaques</option>
+                <option value="IRM de l’épaule">IRM de l’épaule</option>
+                <option value="IRM du coude">IRM du coude</option>
+                <option value="IRM du poignet">IRM du poignet</option>
+                <option value="IRM des doigts">IRM des doigts</option>
+               <option value="IRM du bassin et des hanches">IRM du bassin et des hanches</option>
+                <option value="IRM du genou">IRM du genou</option>
+                <option value="IRM de la cheville">IRM de la cheville</option>
+                <option value="IRM du pied">IRM du pied</option>
+                <option value="IRM hépatique">IRM hépatique</option>
+               
+            </select>
+            <label id="lab">IRM Cérébrale</label><br>
+								<input type="number" th:field="*{valeur}" />
+                 </div>
+                 <button class="btn btn-primary" type="submit">Save</button>
+                 </div></div></form>
+						</div>
+						
+					</div>
+				
+				</div>
+
+			
+		
+
+</body>
+
+</html>
+

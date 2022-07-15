@@ -1,0 +1,285 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+<title>liste des Medecin</title>
+<meta charset="utf-8">
+</head>
+<body>
+	<section layout:fragment="header">
+		<h1>Information Médical</h1>
+		<ol class="breadcrumb">
+			<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+			<li class="active">Information Médical</li>
+		</ol>
+	</section>
+	<div layout:fragment="content">
+		<div class="box">
+			<div class="box-header with-border">
+				<h3 class="box-title">RECHERCHE :</h3>
+				<input type="text" name="keyWord" th:value="${keyWord}">
+				<button type="submit" class="btn btn-primary">CHERCHER</button>
+				<div class="box-tools pull-right">
+					<a href="/patient/add" type="button" class="btn btn-box-tool"><i
+						class="fa fa-plus"></i></a> <br clear="all" />
+				</div>
+			</div>
+			</div>
+			<div class="card card-primary card-tabs">
+				<div class="card-header p-0 pt-1">
+					<ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+						<li class="nav-item"><a class="nav-link active"
+							id="custom-tabs-one-medical-tab" data-toggle="pill"
+							data-url="/tab1"
+							href="#custom-tabs-one-medical" role="tab"
+							aria-controls="custom-tabs-one-medical" aria-selected="false">Information
+								Médical</a></li>
+						<li class="nav-item"><a class="nav-link"
+							id="custom-tabs-one-Consultation-tab" data-toggle="pill"
+							data-url="/tab2"
+							href="#custom-tabs-one-consultation" role="tab"
+							aria-controls="custom-tabs-one-consultation"
+							aria-selected="false">Consultation</a></li>
+						<li class="nav-item"><a class="nav-link"
+							id="custom-tabs-one-bilan-tab" data-toggle="pill"
+							href="#custom-tabs-one-bilan" role="tab"
+							data-url="/tab3"
+							aria-controls="custom-tabs-one-bilan" aria-selected="false">Bilan</a>
+						</li>
+						<li class="nav-item"><a class="nav-link"
+							id="custom-tabs-one-settings-tab" data-toggle="pill"
+							href="#custom-tabs-one-echo" role="tab"
+							data-url="/tab4"
+							aria-controls="custom-tabs-one-echo" aria-selected="false">Echo
+						</a></li>
+					</ul>
+				</div>
+				<div class="card-body">
+					<div class="tab-content" id="custom-tabs-one-tabContent">
+						<div class="tab-pane fade in active" id="custom-tabs-one-medical"
+							role="tabpanel" aria-labelledby="custom-tabs-one-medical-tab">
+							<div class="box-body no-padding">
+								<table class="table table-striped">
+									<tr>
+										<th>Num Dossier</th>
+									
+										<th>Consanguinité</th>
+										<th>Poids</th>
+										<th>Poussée declanché par</th>
+										<th>lactaleSg</th>
+									
+										<th>marqueSurLeVersant</th>
+										<th>taille</th>
+										<th>priseEnCharge</th>
+										<th>reanimatiaux</th>
+										<th>perimetreCranien</th>
+										<!-- <th>cassureStaturaponderal</th>
+										<th>dysmorphieFaciale</th>
+										<th>ageDebut</th -->
+										<!-- <th>signesDebut</th>
+										<th>tableauClinique</th>
+										<th>evolutionClinique</th>
+										<th>evolutionPousse</th>
+										<th>dernierExamen</th>
+										<th>muscle</th>
+										<th>foie</th>
+										<th>hyperpilosite</th>
+										<th>pyruvate</th>
+										<th>lp</th> -->
+										<th>Action</th>
+									</tr>
+									<tr th:each="row : ${list}">
+										<td th:text="${row.numDossier}"></td>
+										
+										<td th:text="${row.consansguinite}"></td>
+										<td th:text="${row.poids}"></td>
+										<td th:text="${row.pousseeDeclanchePar}"></td>
+										<td th:text="${row.lactaleSg}"></td>
+										
+										<td th:text="${row.marqueSurLeVersant}"></td>
+										<td th:text="${row.taille}"></td>
+										<td th:text="${row.priseEnCharge}"></td>
+										<td th:text="${row.reanimatiaux}"></td>
+										<td th:text="${row.perimetreCranien}"></td>
+										<!-- <td th:text="${row.cassureStaturaponderal}"></td>
+									    <td th:text="${row.dysmorphieFaciale}"></td>
+										<td th:text="${row.ageDebut}"></td> -->
+										<!-- <td th:text="${row.signesDebut}"></td>
+										<td th:text="${row.tableauClinique}"></td>
+										<td th:text="${row.evolutionClinique}"></td>
+										<td th:text="${row.evolutionPousse}"></td>
+										<td th:text="${row.dernierExamen}"></td>
+										<td th:text="${row.muscle}"></td>
+										<td th:text="${row.foie}"></td>
+										<td th:text="${row.hyperpilosite}"></td>
+										<td th:text="${row.pyruvate}"></td>
+										<td th:text="${row.lp}"></td> -->
+                   
+										<td><a th:href="${'/dossierMedical/edit/' + row.id}"><img
+												alt="edit" class="user-image" width="40"
+												th:src="@{/dist/img/edit.png}" /></a> | <a
+											th:href="${'/dossierMedical/delete/' + row.id}"
+											title="delete" class="delete"
+											onclick="return confirm('Are you sure you want to delete this item')"><img
+												alt="edit" class="user-image" width="40"
+												th:src="@{/dist/img/corbeille.png}" /></a></td>
+									</tr>
+								</table>
+							</div>
+							<div class="box-footer clearfix">
+								<ul class="pagination pagination-sm no-margin pull-right">
+									<li><a href="/medecin/1">First</a></li>
+									<li th:each="p : ${#numbers.sequence(1, endIndex/beginIndex)}"
+										th:class="${p == currentIndex} ? 'active' : ''"><a
+										th:href="${'/dossierMedical/' + p}" th:text="${p}"></a></li>
+									<li><a th:href="${'/dossierMedical/' + endIndex}">Last</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="custom-tabs-one-consultation"
+							role="tabpanel"
+							aria-labelledby="custom-tabs-one-consultation-tab">
+
+							<div class="box-body no-padding">
+								<table class="table table-striped">
+									<tr>
+										<th>id</th>
+										 <th>Nom patient</th>
+										 	<th>Date Consultation</th>
+										 	<th>medecinTraitant</th>
+										<th>observation</th>
+										<th>traitementPris</th>
+										<th>Prescription</th>
+										<th>Action</th>
+									</tr>
+									<tr th:each="row : ${consultList}">
+										<td th:text="${row.id}"></td>
+										<td th:text="${row.patient_id}"></td>
+										<td th:text="${#dates.format(row.dateConsultation, 'dd/MM/yyyy')}"></td>
+										<td th:text="${row.medecinTraitant}"></td>
+										<td th:text="${row.observation}"></td>
+										<td th:text="${row.traitementPris}"></td>
+										<td th:text="${row.prescription}"></td>
+										
+										
+										<td><a th:href="${'/medecin/edit/' + row.id}"><img
+												alt="edit" class="user-image" width="40"
+												th:src="@{/dist/img/edit.png}" /></a> | <a
+											th:href="${'/medecin/delete/' + row.id}" title="delete"
+											class="delete"
+											onclick="return confirm('Are you sure you want to delete this item')"><img
+												alt="edit" class="user-image" width="40"
+												th:src="@{/dist/img/corbeille.png}" /></a></td>
+									</tr>
+								</table>
+							</div>
+							<div class="box-footer clearfix">
+								<ul class="pagination pagination-sm no-margin pull-right">
+									<li><a href="/medecin/1">First</a></li>
+									<li th:each="p : ${#numbers.sequence(1, endIndex/beginIndex)}"
+										th:class="${p == currentIndex} ? 'active' : ''"><a
+										th:href="${'/medecin/' + p}" th:text="${p}"></a></li>
+									<li><a th:href="${'/medecin/' + endIndex}">Last</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="custom-tabs-one-bilan"
+								role="tabpanel" aria-labelledby="custom-tabs-one-bilan-tab">
+									<div class="box-body no-padding">
+								<table class="table table-striped">
+									<tr>
+									<th>Id</th>
+										<th>les bilans</th>
+										
+										<th>Valeur</th>
+										
+										
+										
+										<th>Action</th>
+									</tr>
+									<tr th:each="row : ${bilanList}">
+										<td th:text="${row.id}"></td>
+										<td th:text="${row.typeBilan}"></td>
+										<td th:text="${row.valeur}"></td>									
+										<td
+										><a th:href="${'/bilan/edit/' + row.id}">
+										<img alt="edit" class="user-image" width="40"
+												th:src="@{/dist/img/edit.png}" /></a> | <a
+											th:href="${'/bilan/delete/' + row.id}" title="delete"
+											class="delete"
+											onclick="return confirm('Are you sure you want to delete this item')"><img
+												alt="edit" class="user-image" width="40"
+												th:src="@{/dist/img/corbeille.png}" /></a>
+												</td>
+									</tr>
+								</table>
+							</div>
+							<div class="box-footer clearfix">
+								<ul class="pagination pagination-sm no-margin pull-right">
+									<li><a href="/bilan/1">First</a></li>
+									<li th:each="p : ${#numbers.sequence(1, endIndex/beginIndex)}"
+										th:class="${p == currentIndex} ? 'active' : ''"><a
+										th:href="${'/bilan/' + p}" th:text="${p}"></a></li>
+									<li><a th:href="${'/bilan/' + endIndex}">Last</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="custom-tabs-one-echo"
+								role="tabpanel" aria-labelledby="custom-tabs-one-echo">
+										<div class="box-body no-padding">
+								<table class="table table-striped">
+									<tr>
+                    <th>ID</th>
+                   <th>Echo Cardiaque</th>
+                    <th>Gaz Sang</th>
+                    <th>Fond Oeil</th>
+                    <th>ERG</th>
+                   <th> PEA</th>
+                   <th> EmgVcn</th>
+                    <th>EEG</th>
+                    
+                    <th>Action</th>
+                </tr>
+									<tr th:each="row : ${echoList}">
+										<td th:text="${row.id}"></td>
+										  <td th:text="${row.echoCardiaque}"></td>
+                    <td th:text="${row.gazSang}"></td>
+                    <td th:text="${row.fondOeil}"></td>
+                    <td th:text="${row.eRG}"></td>
+                      <td th:text="${row.pEA}"></td>
+                    <td th:text="${row.emgVcn}"></td>
+                    <td th:text="${row.eEG}"></td>
+										
+										
+										<td><a th:href="${'/echoExamenClinique/edit/' + row.id}"><img
+												alt="edit" class="user-image" width="40"
+												th:src="@{/dist/img/edit.png}" /></a> | <a
+											th:href="${'/bilan/delete/' + row.id}" title="delete"
+											class="delete"
+											onclick="return confirm('Are you sure you want to delete this item')"><img
+												alt="edit" class="user-image" width="40"
+												th:src="@{/dist/img/corbeille.png}" /></a></td>
+									</tr>
+								</table>
+							</div>
+							<div class="box-footer clearfix">
+								<ul class="pagination pagination-sm no-margin pull-right">
+									<li><a href="/medecin/1">First</a></li>
+									<li th:each="p : ${#numbers.sequence(1, endIndex/beginIndex)}"
+										th:class="${p == currentIndex} ? 'active' : ''"><a
+										th:href="${'/medecin/' + p}" th:text="${p}"></a></li>
+									<li><a th:href="${'/medecin/' + endIndex}">Last</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+
+</html>
+

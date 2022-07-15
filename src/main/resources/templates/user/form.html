@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Systeme de gestion des patients | Login</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/Sgp.min.css"/>
+    <!-- iCheck -->
+    <link rel="stylesheet" href="/plugins/iCheck/square/blue.css"/>
+
+   
+</head>
+<body class="hold-transition login-page"   th:style="'background: url(/dist/img/bg4.jpg) no-repeat  center center fixed ;background-size: cover;'">
+ 
+
+<div class="login-box">
+   
+<div class="box">
+	<div class="box-header with-border">
+		<h3 class="box-title">Créer un compte.</h3>
+		<div class="box-tools pull-right">
+			
+		</div>
+	</div>
+
+	<form data-toggle="validator" role="form" th:object="${user}"
+		th:action="@{/user/save}" method="post">
+		<div class="box-body">
+			<input type="hidden" th:field="*{id}" />
+			<div class="form-group">
+				<label for="Matricule">Matricule</label>
+				 <input type='text' pattern="[0-9]{8}" class="form-control"   required placeholder="" th:field="*{matricule}" id="matricule" />
+			<p>Le matricule d'utilisateur doivent être contenir 8 chiffres.</p>
+			</div>
+
+			<div class="form-group">
+				<label for="email">E-mail </label>
+				 <input type="email" required class="form-control" th:field="*{email}" id="email" />
+				
+			</div>
+
+			<div class="form-group">
+				<label for="pwd2">Password:	</label>
+				 <input type="password" 
+					name="pwd1" class="form-control" id="password"
+					placeholder="Enter password" th:field="*{password}" required autofocus />
+				
+			</div>
+		
+		<div class="form-group">
+		<label for="pwd2">Confirm Password:	</label> 
+		<input type="password" name="pwd2" onclick="checkPasswordMatch()" class="form-control" id="confirm_password"
+			placeholder="Enter password" required />
+		
+			</div>
+			<div class="form-group">
+			 <label>Role</label>
+		<select class="form-control" th:field="*{roles}">
+			<option value="">Select Roles</option>
+			<option value="5">MEDECIN</option>
+			<option value="6">INFERMIE</option>
+		</select>
+		
+		</div>
+		</div>
+		<div class="box-footer">
+			<button class="btn btn-primary" type="submit">Save</button>
+			<p th:if="${userExist}" style="color:#FF0000" >Un compte avec cette matricule est déja existe </p>
+			<p th:if="${userExists}" style="color:#FF0000" >Un compte avec cette email est déja existe </p>	
+			
+			<p class="fs-3">Vous avez déja un compte <a href="/Login">Sign in</a></p>
+			
+		</div>
+	</form>
+</div>
+<script>
+
+
+var password = document.getElementById("password"),
+confirm_password = document.getElementById("confirm_password");
+
+function validatePassword() {
+if (password.value != confirm_password.value) {
+  confirm_password.setCustomValidity("Passwords Don't Match");
+} else {
+  confirm_password.setCustomValidity("");
+}
+}
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
+<!-- jQuery 2.2.0 -->
+<script src="/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="/plugins/iCheck/icheck.min.js"></script>
+
+</div>
+</body>
+</html>

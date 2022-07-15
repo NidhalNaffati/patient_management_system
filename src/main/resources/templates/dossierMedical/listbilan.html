@@ -1,0 +1,57 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="layout">
+<head>
+    <title>Bilan</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>bilan</h1>
+<ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li class="active">bilan</li>
+</ol>
+</section>
+<div layout:fragment="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Listes</h3>
+            <div class="box-tools pull-right">
+                <br clear="all" />
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                   <th>type de Bilan</th>
+                   <th>valeur</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="row : ${list}">
+                    <td th:text="${row.id}"></td>
+                      <td th:text="${row.typeBilan}"></td>
+                    <td th:text="${row.valeur}"></td>
+                   
+                    
+                    
+                   
+                    
+                    
+                    <td>
+                     <a th:href="${'/bilan/edit/' + row.id}"><img alt="edit" class="user-image" width="40" th:src="@{/dist/img/edit.png}"/></a> 
+                    
+                             
+                        <a th:href="${'/bilan/delete/' + row.id}">Delete</a>
+         
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</div>
+</body>
+</html>
+

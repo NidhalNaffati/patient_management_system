@@ -1,0 +1,75 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+	    <script type="text/javascript" src="dist/appJs.js"></script>
+<head>
+
+<title>Echo</title>
+<meta charset="utf-8">
+
+</head>
+<body>
+	<section layout:fragment="header">
+		<h1>Echo</h1>
+
+		<ol class="breadcrumb">
+			<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+			<li class="active">Bilan</li>
+		</ol>
+	</section>
+	<div layout:fragment="content">
+		<div class="box">
+			<div class="container">
+				<div class="box-header with-border">
+					<div class="box-tools pull-right"></div>
+				</div>
+				<form data-toggle="validator" role="form"
+					th:object="${bilan}"
+					th:action="@{/bilan/save}" method="post">
+					<div class="box-body">
+								<input type="hidden" th:field="*{id}" />
+
+						<div class="card-body">
+							<div class="tab-content" id="custom-tabs-one-tabContent">
+								<div class="tab-pane fade in active"
+									id="custom-tabs-one-general" role="tabpanel"
+									aria-labelledby="custom-tabs-one-general-tab">
+									<div class="row">
+									
+									
+									<div class="form-group col-md-6">
+							<label class="col-sm-4 control-label">Bilan</label>
+							<div class="col-sm-8">
+								<select onchange="leaveChange(this)"  class="form-control" required th:field="*{typeBilan}">
+									<option value="bilan Hemato">bilan Hemato</option>
+									<option value="bilan Hepatique">bilan Hepatique</option>
+									<option value="bilan Renal">bilan Renal</option>
+									
+								</select>
+								<label id="lab">bilan Hemato</label><br>
+								<input type="number" th:field="*{valeur}" />
+							</div>
+								</div>
+										<div class="form-group col-md-6">
+											<label class="col-sm-4 control-label">télécharger  </label>
+											<div class="col-sm-7">
+												<input type="file"  class="form-control" th:field="*{file}" id="file"/>
+											</div>
+										</div>
+						</div>
+									<button class="btn btn-primary" type="submit">Save</button>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+
+</html>
